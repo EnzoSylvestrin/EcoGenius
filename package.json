@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.0.9",
     "@radix-ui/react-slot": "^1.0.1",
     "@types/node": "18.16.1",
     "@types/react": "18.2.0",
