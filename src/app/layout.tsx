@@ -11,7 +11,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="pt">
       <body className='dark'>
-        <section className='min-h-screen bg-grayMain dark:bg-darkMain'>
+        <section className='transition duration-300 min-h-screen bg-grayMain dark:bg-darkMain'>
           <Header />
           {children}
         </section>

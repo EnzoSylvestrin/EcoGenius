@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from "react";
 
-import { Moon, Sun } from "@phosphor-icons/react";
+import { MoonStars, Sun } from "@phosphor-icons/react";
 
 export const Theme = () => {
 
@@ -32,7 +32,7 @@ export const Theme = () => {
         }
     }
 
-    const Icon = darkMode ? Sun : Moon;
+    const Icon = darkMode ? Sun : MoonStars;
 
     return (
         <div
@@ -43,6 +43,7 @@ export const Theme = () => {
             <Icon
                 className="text-darkColor text-xxl transition-all duration-300 dark:text-lightColor"
                 size={28}
+                weight="duotone"
                 data-testid='icon'
             />
         </div>
