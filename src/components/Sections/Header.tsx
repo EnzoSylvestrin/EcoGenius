@@ -11,11 +11,11 @@ import { List, X } from "@phosphor-icons/react";
 import clsx from "clsx";
 
 import Image from "next/image";
-import Logo from '@/assets/LogoEco.png';
 
 import { Heading } from "../Utility/Heading";
 import { Theme } from "../Utility/Theme";
 import { Text } from "../Utility/Text";
+import Logo from "../Utility/Logo";
 
 const Header = () => {
 
@@ -69,8 +69,7 @@ const Header = () => {
             )}>
                 <div className="w-full hidden md:flex items-center justify-between">
                     <a href="#page-top" className="flex items-center justify-center gap-1">
-                        <Image src={Logo.src} width={38} height={48} alt="Logo ecoGenius" quality={100} />
-                        <Heading size="sm" colored>EcoGenius</Heading>
+                        <Logo />
                     </a>
                     <div className="flex items-center justify-center">
                         <Theme isScrolled={isScrolled} />
@@ -83,8 +82,7 @@ const Header = () => {
                 </div>
                 <div className="w-full flex items-center justify-center md:hidden">
                     <a href="#page-top" className="flex items-center justify-center gap-1">
-                        <Image src={Logo.src} width={38} height={48} alt="Logo ecoGenius" quality={100} />
-                        <Heading size="sm" colored>EcoGenius</Heading>
+                        <Logo />
                     </a>
                     <MenuComponent state={Open} onClick={ToggleState} />
                     <motion.div
