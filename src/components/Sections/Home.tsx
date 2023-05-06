@@ -1,3 +1,7 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
 import clsx from "clsx";
 
 import BounceArrow from "@/components/Utility/BounceArrow";
@@ -19,7 +23,14 @@ const Home = () => {
                 useLightMode={false}
                 size="lg"
             >
-                Entenda as consequências da emissão de carbono
+                <motion.p
+                    initial={{ y: 80, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.35 }}
+                    viewport={{ once: true }}
+                >
+                    Entenda as consequências da emissão de carbono
+                </motion.p>
             </Heading>
             <BounceArrow />
         </section>

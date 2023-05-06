@@ -8,6 +8,9 @@ import { ServerThemeProvider } from '@wits/next-themes';
 export const metadata = {
   title: 'Eco Genius',
   description: 'Site feito para APS 2023',
+  icons: {
+    icon: '/favicon.ico'
+  }
 }
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
