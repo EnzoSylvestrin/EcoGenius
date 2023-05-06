@@ -1,47 +1,43 @@
 'use client';
+
 import { useEffect, useState } from "react";
+
+import { useTheme } from "@wits/next-themes";
 
 import { MoonStars, Sun } from "@phosphor-icons/react";
 
-export const Theme = () => {
+import Skeleton from "./Skeleton";
 
-    const [darkMode, setdarkMode] = useState<boolean>(true);
+export const Theme = ({ isScrolled }: { isScrolled: boolean }) => {
+
+    const [mounted, setMounted] = useState(false);
+
+    const { theme, setTheme } = useTheme();
+
+    const Icon = theme === 'dark' ? Sun : MoonStars;
 
     const ToggleMode = () => {
-        setdarkMode(!darkMode);
-        setTheme(darkMode ? 'light' : 'dark');
-        document.body.style.setProperty('--bgColor', darkMode ? '#ececec' : '#333333');
-        document.body.style.setProperty('--colorInverse', darkMode ? '#333333' : '#ececec');
-        localStorage.setItem('theme', darkMode ? 'light' : 'dark');
+        setTheme(theme === 'dark' ? 'light' : 'dark');
     }
 
     useEffect(() => {
-        let theme = localStorage.getItem('theme');
-        setdarkMode(theme == null ? true : theme === 'dark' ? true : false);
-        setTheme(theme == null ? 'dark' : theme === 'dark' ? 'dark' : 'light');
-        document.body.style.setProperty('--bgColor', theme != "light" ? '#333333' : '#ececec');
-        document.body.style.setProperty('--colorInverse', theme != "light" ? '#ececec' : '#333333');
-    }, []);
+        setMounted(true)
+    }, [])
 
-    const setTheme = (theme: 'dark' | 'light') => {
-        if (theme === 'dark') {
-            document.body.classList.add('dark');
-        }
-        else {
-            document.body.classList.remove('dark');
-        }
+    if (!mounted) {
+        return (
+            <Skeleton width={32} height={32} circle />
+        )
     }
-
-    const Icon = darkMode ? Sun : MoonStars;
 
     return (
         <div
-            className="rounded-full p-[6px] cursor-pointer hover:bg-lightHover dark:hover:bg-darkHover"
+            className={`rounded-full p-[6px] cursor-pointer ${!isScrolled ? 'hover:bg-darkHover' : 'hover:bg-lightHover dark:hover:bg-darkHover'}`}
             onClick={ToggleMode}
             data-testid="themeToggler"
         >
             <Icon
-                className="text-darkColor text-xxl transition-all duration-300 dark:text-lightColor"
+                className={`text-xxl transition-all duration-300 ${isScrolled ? 'text-darkColor dark:text-lightColor' : 'text-lightColor'}`}
                 size={28}
                 weight="duotone"
                 data-testid='icon'

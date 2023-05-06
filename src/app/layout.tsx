@@ -1,6 +1,9 @@
+import clsx from 'clsx';
 import '../styles/globals.css';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 import Header from '@/components/Header';
+import { ServerThemeProvider } from '@wits/next-themes';
 
 export const metadata = {
   title: 'Eco Genius',
@@ -9,14 +12,21 @@ export const metadata = {
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html lang="pt">
-      <body className='dark'>
-        <section className='transition duration-300 min-h-screen bg-grayMain dark:bg-darkMain'>
-          <Header />
-          {children}
-        </section>
-      </body>
-    </html>
+    <ServerThemeProvider
+      attribute="class"
+      defaultTheme='dark'
+    >
+      <html lang="pt">
+        <body>
+          <section className={clsx(
+            'transition duration-300 min-h-screen bg-grayMain dark:bg-darkMain',
+          )}>
+            <Header />
+            {children}
+          </section>
+        </body>
+      </html>
+    </ServerThemeProvider>
   )
 }
 

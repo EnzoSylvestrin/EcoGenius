@@ -10,17 +10,21 @@ type TextProps = {
     className?: String,
     align?: 'left' | 'center' | 'right',
     colored?: boolean,
+    useDarkMode?: boolean,
+    useLightMode?: boolean,
 }
 
-export const Text = ({ children, size = 'md', colored, className, align = 'left', ...props }: TextProps) => {
+export const Text = ({ children, size = 'md', colored, useDarkMode = true, useLightMode = true, className, align = 'left', ...props }: TextProps) => {
 
     const Comp = children != null ? 'p' : Slot;
 
     return (
         <Comp
             className={clsx(
-                'text-neutral-900 dark:text-gray-50',
                 {
+                    'text-neutral-900 dark:text-gray-50': useLightMode && useDarkMode,
+                    'text-neutral-900': !useDarkMode,
+                    'text-gray-50': !useLightMode,
                     'text-sm': size === 'sm',
                     'text-md': size === 'md',
                     'text-lg': size === 'lg',

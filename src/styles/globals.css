@@ -1,9 +1,27 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap");
 
 * {
-  font-family: "Work Sans", sans-serif;
+  font-family: "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(249 250 251);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d4d3d3;
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #b3b3b3;
+}
