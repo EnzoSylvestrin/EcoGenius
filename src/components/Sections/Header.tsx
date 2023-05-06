@@ -2,43 +2,66 @@
 
 import { HTMLAttributes, useEffect, useState } from "react";
 
+import { motion } from "framer-motion";
+
+import { useIsMedium } from "@/Hooks/UseMediaQuery";
+
+import { List, X } from "@phosphor-icons/react";
+
 import clsx from "clsx";
 
+import Image from "next/image";
 import Logo from '@/assets/LogoEco.png';
 
-import { Heading } from "./Heading";
-import { Theme } from "./Theme";
-import { Text } from "./Text";
-import { useIsMedium } from "@/Hooks/UseMediaQuery";
-import { List, X } from "@phosphor-icons/react";
-import Image from "next/image";
+import { Heading } from "../Utility/Heading";
+import { Theme } from "../Utility/Theme";
+import { Text } from "../Utility/Text";
 
 const Header = () => {
 
     const [isScrolled, setIsScrolled] = useState(false);
-    const [State, setState] = useState<boolean>(false);
+    const [Open, setOpen] = useState<boolean>(false);
+
+    const [prevScrollPos, setPrevScrollPos] = useState(0);
+    const [isVisible, setIsVisible] = useState(true);
 
     const isMedium = useIsMedium();
 
     const ToggleState = () => {
-        setState(!State);
-    }
+        setOpen(!Open);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
             const scrollTop = window.pageYOffset;
             setIsScrolled(scrollTop > 0);
+
+            if (scrollTop > (prevScrollPos + 20) && isVisible) {
+                setIsVisible(false);
+            } else if (scrollTop < prevScrollPos && !isVisible) {
+                setIsVisible(true);
+            }
+            setPrevScrollPos(scrollTop);
         };
 
         setIsScrolled(window.pageYOffset > 0);
+        setPrevScrollPos(window.pageYOffset);
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener("scroll", handleScroll);
 
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [isVisible, prevScrollPos]);
 
     return (
-        <header className="sticky top-0 z-[999]">
+        <motion.header
+            className="sticky top-0 z-[999]"
+            animate={{
+                translateY: Open ? 0 : isVisible ? 0 : '-10vh'
+            }}
+            transition={{
+                duration: 0.2,
+            }}
+        >
             <nav className={clsx(
                 "w-full h-[10vh] min-h-[60px] py-3 flex border-main border-b-2 items-center",
                 "transition-all duration-300 px-6",
@@ -63,21 +86,35 @@ const Header = () => {
                         <Image src={Logo.src} width={38} height={48} alt="Logo ecoGenius" quality={100} />
                         <Heading size="sm" colored>EcoGenius</Heading>
                     </a>
-                    <MenuComponent state={State} onClick={ToggleState} />
-                </div>
-                <div className={`fixed top-[10vh] right-0 h-[90vh] flex bg-grayMain transition-all duration-300 ease-in w-52 dark:bg-darkMain ${State ? 'translate-0' : 'translate-x-[208px]'}`}>
-                    <div className="w-full flex items-center justify-center flex-col relative">
-                        <ul className="list-none flex items-center flex-col gap-4">
-                            <Listitem isScrolled={isScrolled} text="Home" />
-                            <Listitem isScrolled={isScrolled} text="Calculadora" />
-                        </ul>
-                        <div className="absolute bottom-[10px] left-[50%] -translate-x-[50%]">
-                            <Theme isScrolled={isScrolled} />
+                    <MenuComponent state={Open} onClick={ToggleState} />
+                    <motion.div
+                        className={clsx(
+                            `fixed top-[10vh] right-0 h-[90vh] flex bg-grayMain w-52 dark:bg-darkMain`
+                        )}
+                        initial={{
+                            translateX: '208px',
+                        }}
+                        animate={{
+                            translateX: Open ? 0 : '208px'
+                        }}
+                        transition={{
+                            duration: 0.8,
+                            type: 'spring',
+                        }}
+                    >
+                        <div className="w-full flex items-center justify-center flex-col relative">
+                            <ul className="list-none flex items-center flex-col gap-4">
+                                <Listitem isScrolled={isScrolled} text="Home" />
+                                <Listitem isScrolled={isScrolled} text="Calculadora" />
+                            </ul>
+                            <div className="absolute bottom-[10px] left-[50%] -translate-x-[50%]">
+                                <Theme isScrolled={isScrolled} />
+                            </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </nav>
-        </header>
+        </motion.header >
     );
 }
 

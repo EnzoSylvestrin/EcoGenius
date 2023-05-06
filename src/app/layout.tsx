@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import '../styles/globals.css';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-import Header from '@/components/Header';
+import Header from '@/components/Sections/Header';
 import { ServerThemeProvider } from '@wits/next-themes';
 
 export const metadata = {
