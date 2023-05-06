@@ -3,6 +3,7 @@
 * {
   font-family: "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
+  scroll-behavior: smooth;
 }
 
 @tailwind base;

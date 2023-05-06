@@ -18,9 +18,12 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     >
       <html lang="pt">
         <body>
-          <section className={clsx(
-            'transition duration-300 min-h-screen bg-grayMain dark:bg-darkMain',
-          )}>
+          <section
+            className={clsx(
+              'transition duration-300 min-h-screen bg-grayMain dark:bg-darkMain',
+            )}
+            id='page-top'
+          >
             <Header />
             {children}
           </section>
