@@ -87,7 +87,7 @@ const Header = () => {
                     <MenuComponent state={Open} onClick={ToggleState} />
                     <motion.div
                         className={clsx(
-                            `fixed top-[10vh] right-0 h-[90vh] flex bg-grayMain w-52 dark:bg-darkMain`
+                            `fixed top-[10vh] right-0 h-[90vh] flex bg-grayMain w-52 transition-colors duration-300 dark:bg-darkMain`
                         )}
                         initial={{
                             translateX: '208px',
@@ -112,7 +112,7 @@ const Header = () => {
                     </motion.div>
                 </div>
             </nav>
-        </motion.header >
+        </motion.header>
     );
 }
 
@@ -122,13 +122,16 @@ type ListItemProps = {
 }
 
 const Listitem = ({ text, isScrolled }: ListItemProps) => {
+
+    const isMedium = useIsMedium();
+
     return (
         <li className={clsx(
             "after:block after:w-full after:border-b-[2px] after:ease-in-out after:duration-[320ms] after:scale-0",
             "after:border-b-main hover:after:scale-100 hover:after:h-auto uppercase",
             "cursor-pointer"
         )}>
-            <Text useLightMode={isScrolled} size="lg">{text}</Text>
+            <Text useLightMode={isScrolled || !isMedium} size="lg">{text}</Text>
         </li>
     )
 }

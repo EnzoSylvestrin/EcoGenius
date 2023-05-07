@@ -7,12 +7,15 @@ import { useTheme } from "@wits/next-themes";
 import { MoonStars, Sun } from "@phosphor-icons/react";
 
 import Skeleton from "./Skeleton";
+import { useIsMedium } from "@/Hooks/UseMediaQuery";
 
 export const Theme = ({ isScrolled }: { isScrolled: boolean }) => {
 
     const [mounted, setMounted] = useState(false);
 
     const { theme, setTheme } = useTheme();
+
+    const isMedium = useIsMedium();
 
     const Icon = theme === 'dark' ? Sun : MoonStars;
 
@@ -26,7 +29,7 @@ export const Theme = ({ isScrolled }: { isScrolled: boolean }) => {
 
     return (
         <div
-            className={`rounded-full p-[6px] cursor-pointer ${!mounted ? '' : !isScrolled ? 'hover:bg-darkHover' : 'hover:bg-lightHover dark:hover:bg-darkHover'}`}
+            className={`rounded-full p-[6px] cursor-pointer ${!mounted ? '' : !isScrolled && isMedium ? 'hover:bg-darkHover' : 'hover:bg-lightHover dark:hover:bg-darkHover'}`}
             onClick={ToggleMode}
             data-testid="themeToggler"
         >
@@ -34,7 +37,7 @@ export const Theme = ({ isScrolled }: { isScrolled: boolean }) => {
                 mounted
                     ?
                     <Icon
-                        className={`text-xxl transition-all duration-300 ${isScrolled ? 'text-darkColor dark:text-lightColor' : 'text-lightColor'}`}
+                        className={`text-xxl transition-all duration-300 ${isScrolled || !isMedium ? 'text-darkColor dark:text-lightColor' : 'text-lightColor'}`}
                         size={28}
                         weight="duotone"
                         data-testid='icon'

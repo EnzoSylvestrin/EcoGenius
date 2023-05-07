@@ -7,9 +7,9 @@ import { Text } from "../Utility/Text";
 const About = () => {
     return (
         <section className="flex items-center justify-center flex-col py-10">
-            <Heading className={'mb-6'} colored>O que é pegada de carbono?</Heading>
-            <div className="flex items-center justify-center">
-                <div className="relative w-[50%] p-2 flex items-center justify-center">
+            <Heading align="center" className={'mb-6'} colored>O que é a pegada de carbono?</Heading>
+            <div className="flex items-center justify-center flex-col-reverse md:flex-row">
+                <div className="relative w-full p-2 flex items-center justify-center md:w-[50%]">
                     <Image
                         src="/factory.png"
                         alt="Fábrica"
@@ -17,7 +17,7 @@ const About = () => {
                         height={300}
                     />
                 </div>
-                <div className="w-[50%] flex items-center justify-center flex-col">
+                <div className="w-full flex mb-4 items-center justify-center flex-col md:w-[50%]">
                     <Heading align="center">Entenda</Heading>
                     <Text className='leading-relaxed w-[90%]'>
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati sunt

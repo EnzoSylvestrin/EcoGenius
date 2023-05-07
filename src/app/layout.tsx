@@ -4,6 +4,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 
 import Header from '@/components/Sections/Header';
 import { ServerThemeProvider } from '@wits/next-themes';
+import ScrollBar from '@/components/Utility/ScrollBar';
 
 export const metadata = {
   title: 'Eco Genius',
@@ -24,9 +25,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <section
             className={clsx(
               'transition duration-300 min-h-screen bg-grayMain dark:bg-darkMain',
+              'selection:text-main selection:bg-transparent'
             )}
             id='page-top'
           >
+            <ScrollBar />
             <Header />
             {children}
           </section>
