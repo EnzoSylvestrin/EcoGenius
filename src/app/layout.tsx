@@ -5,6 +5,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import Header from '@/components/Sections/Header';
 import { ServerThemeProvider } from '@wits/next-themes';
 import ScrollBar from '@/components/Utility/ScrollBar';
+import Footer from '@/components/Sections/Footer';
 
 export const metadata = {
   title: 'Eco Genius',
@@ -32,6 +33,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             <ScrollBar />
             <Header />
             {children}
+            <Footer />
           </section>
         </body>
       </html>
