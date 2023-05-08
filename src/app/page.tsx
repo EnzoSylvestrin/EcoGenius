@@ -1,4 +1,5 @@
 import About from "@/components/Sections/About";
+import Calculadora from "@/components/Sections/Calc";
 import Home from "@/components/Sections/Home";
 
 const Main = () => {
@@ -6,6 +7,7 @@ const Main = () => {
     <main>
       <Home />
       <About />
+      <Calculadora />
     </main>
   )
 }

@@ -19,7 +19,7 @@ const About = () => {
                 </div>
                 <div className="w-full flex mb-4 items-center justify-center flex-col md:w-[50%]">
                     <Heading align="center">Entenda</Heading>
-                    <Text className='leading-relaxed w-[90%]'>
+                    <Text align="center" className='leading-relaxed w-[90%] md:!text-start'>
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati sunt
                         magnam odio officia soluta eaque veniam totam cumque, atque, commodi quod non
                         deserunt! Aperiam, ad nesciunt esse id distinctio possimus? <br />

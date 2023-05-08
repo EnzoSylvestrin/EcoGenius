@@ -8,7 +8,7 @@ const Footer = () => {
             border-t-2 border-t-main transition-colors duration-300`
         )}>
             <Text>Insert text here</Text>
-            <Text>Made by Enzo Sylvestrin</Text>
+            <Text><a href="#">Sobre nós</a></Text>
         </footer>
     );
 }

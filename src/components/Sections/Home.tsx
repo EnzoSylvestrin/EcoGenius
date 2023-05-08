@@ -4,9 +4,10 @@ import { motion } from 'framer-motion';
 
 import clsx from "clsx";
 
+import Image from 'next/image';
+
 import BounceArrow from "@/components/Utility/BounceArrow";
 import { Heading } from "@/components/Utility/Heading";
-import Image from 'next/image';
 
 const Home = () => {
     return (
