@@ -9,10 +9,11 @@ type ButtonProps = {
   full?: boolean,
   type?: "button" | "submit" | "reset",
   loading?: boolean,
+  className?: string,
   onClick?: () => void,
 }
 
-export const Button = ({ size = 'md', type = "button", text, href, loading = false, full, onClick, ...props }: ButtonProps) => {
+export const Button = ({ size = 'md', className, type = "button", text, href, loading = false, full, onClick, ...props }: ButtonProps) => {
   const Button = href ? 'a' : 'button';
 
   return (
@@ -21,13 +22,16 @@ export const Button = ({ size = 'md', type = "button", text, href, loading = fal
       className={clsx(
         "rounded-lg bg-main text-white ring-main ring-2 transition-all duration-500 ",
         "px-2 py-1 cursor-pointer shadow-lg selection:text-inherit",
-        'hover:bg-transparent hover:text-main', {
-        'text-sm': size === 'sm',
-        'text-md': size === 'md',
-        'text-lg': size === 'lg',
-        'w-full': full,
-        '!text-transparent relative bg-transparent': loading
-      })}
+        'hover:bg-transparent hover:text-main',
+        {
+          'text-sm': size === 'sm',
+          'text-md': size === 'md',
+          'text-lg': size === 'lg',
+          'w-full': full,
+          '!text-transparent relative bg-transparent': loading
+        },
+        className
+      )}
       {...(href ? { target: "_blank", rel: "noopener noreferrer", href: href } : {})}
       onClick={!loading ? onClick : () => { return }}
       {...props}
