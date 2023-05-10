@@ -16,6 +16,9 @@ module.exports = {
         darkHover: '#444950',
       }
     },
+    screens: {
+      xs: '360px',
+    },
     fontSize: {
       xs: 14,
       sm: 16,

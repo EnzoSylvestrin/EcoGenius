@@ -1,6 +1,6 @@
 'use client';
 
-import { Bus, CarProfile, Lightning, Wind } from "@phosphor-icons/react";
+import { Bus, CarProfile, Icon, Lightning, Wind } from "@phosphor-icons/react";
 
 import { motion } from 'framer-motion';
 
@@ -14,14 +14,20 @@ import { Input } from "../Utility/Input";
 import Player from "../Utility/Player";
 import { Text } from "../Utility/Text";
 import CalcButton from "../Utility/CalcButton";
+import Tooltip from "../Utility/Tooltip";
+
+type IconProps = {
+    Icon: Icon,
+    Text: string,
+}
 
 const Calculadora = () => {
 
-    const Icons = [
-        Lightning,
-        CarProfile,
-        Bus,
-        Wind
+    const Icons: IconProps[] = [
+        { Icon: Lightning, Text: 'Elétrica' },
+        { Icon: CarProfile, Text: 'Deslocamento individual' },
+        { Icon: Bus, Text: 'Deslocamento coletivo' },
+        { Icon: Wind, Text: 'Gás' }
     ];
 
     return (
@@ -40,21 +46,28 @@ const Calculadora = () => {
                 {
                     Icons.map((element, i) => {
                         return (
-                            <motion.div
-                                initial={{ y: i % 2 === 0 ? -30 : 30, opacity: 0 }}
-                                whileInView={{ y: 0, opacity: 1 }}
-                                transition={{ duration: 0.5, delay: i * 0.15 }}
-                                viewport={{ once: true }}
-                            >
-                                <CalcButton Icon={element} />
-                            </motion.div>
+                            <Tooltip
+                                key={i}
+                                element={
+                                    <motion.div
+                                        initial={{ y: i % 2 === 0 ? -30 : 30, opacity: 0 }}
+                                        whileInView={{ y: 0, opacity: 1 }}
+                                        transition={{ duration: 0.5, delay: i * 0.15 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        <CalcButton Icon={element.Icon} />
+                                    </motion.div>
+                                }
+                                text={element.Text}
+                                place="bottom"
+                            />
                         )
                     })
                 }
             </div>
-            <div className="w-full flex items-center justify-around">
+            <div className="w-full flex items-center justify-around flex-col-reverse mt-4 md:flex-row md:mt-0">
                 <motion.div
-                    className="grid place-content-center"
+                    className="place-content-center hidden xs:grid"
                     initial={{ x: -80, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.35 }}
@@ -70,7 +83,7 @@ const Calculadora = () => {
                 </motion.div>
                 <motion.div
                     className={clsx(
-                        `w-[50%] min-w-[200px] max-w-[350px] bg-gray-200 dark:bg-neutral-800 flex gap-4 items-center 
+                        `w-[50%] min-w-[260px] max-w-[350px] bg-gray-200 dark:bg-neutral-800 flex gap-4 items-center 
                         flex-col px-2 py-4 rounded-lg transition-colors duration-300`
                     )}
                     initial={{ x: 80, opacity: 0 }}
