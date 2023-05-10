@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 import { motion } from "framer-motion";
 
 import { Bank, Bus, CarProfile, GasCan, LineSegment, Money } from "@phosphor-icons/react";
@@ -32,9 +30,9 @@ export const CalcEletricity = () => {
         <motion.form
             className={clsx(
                 `w-[50%] min-w-[260px] max-w-[350px] bg-gray-200 dark:bg-neutral-800 flex gap-4 items-center 
-                        flex-col px-2 py-4 rounded-lg transition-colors duration-300`
+                        flex-col px-2 py-4 rounded-lg transition-colors duration-300  shadow-[rgba(50,_50,_93,_0.25)_0px_50px_100px_-20px,_rgba(0,0,0,0.3)_0px_30px_60px_-30px,_rgba(10,37,64,0.35)_0px_-2px_6px_0px_inset]`
             )}
-            initial={{ x: 80, opacity: 0 }}
+            initial={{ x: -80, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.35 }}
             viewport={{ once: true }}
@@ -107,7 +105,7 @@ export const CalcGas = () => {
         <motion.form
             className={clsx(
                 `w-[50%] min-w-[260px] max-w-[350px] bg-gray-200 dark:bg-neutral-800 flex gap-4 items-center 
-                    flex-col px-2 py-4 rounded-lg transition-colors duration-300`
+                flex-col px-2 py-4 rounded-lg transition-colors duration-300  shadow-[rgba(50,_50,_93,_0.25)_0px_50px_100px_-20px,_rgba(0,0,0,0.3)_0px_30px_60px_-30px,_rgba(10,37,64,0.35)_0px_-2px_6px_0px_inset]`
             )}
             initial={{ x: 80, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
@@ -183,10 +181,10 @@ export const CalcCar = () => {
         <motion.form
             className={clsx(
                 `w-[50%] min-w-[260px] max-w-[350px] bg-gray-200 dark:bg-neutral-800 flex gap-4 items-center 
-                    flex-col px-2 py-4 rounded-lg transition-colors duration-300`
+                flex-col px-2 py-4 rounded-lg transition-colors duration-300 shadow-[rgba(50,_50,_93,_0.25)_0px_50px_100px_-20px,_rgba(0,0,0,0.3)_0px_30px_60px_-30px,_rgba(10,37,64,0.35)_0px_-2px_6px_0px_inset]`
             )}
-            initial={{ x: 80, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
+            initial={{ y: 80, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.35 }}
             viewport={{ once: true }}
             onSubmit={handleSubmit(OnSubmit)}
@@ -251,8 +249,8 @@ export const CalcCar = () => {
             <label htmlFor="kilometragem" className="w-[90%] mb-1">
                 <Text>
                     <motion.p
-                        initial={{ x: 40, opacity: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
+                        initial={{ y: -40, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.34 }}
                         viewport={{ once: true }}
                     >
@@ -286,10 +284,10 @@ export const CalcBus = () => {
         <motion.form
             className={clsx(
                 `w-[50%] min-w-[260px] max-w-[350px] bg-gray-200 dark:bg-neutral-800 flex gap-4 items-center 
-                    flex-col px-2 py-4 rounded-lg transition-colors duration-300`
+                    flex-col px-2 py-4 rounded-lg transition-colors duration-300  shadow-[rgba(50,_50,_93,_0.25)_0px_50px_100px_-20px,_rgba(0,0,0,0.3)_0px_30px_60px_-30px,_rgba(10,37,64,0.35)_0px_-2px_6px_0px_inset]`
             )}
-            initial={{ x: 80, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
+            initial={{ y: -80, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.35 }}
             viewport={{ once: true }}
             onSubmit={handleSubmit(OnSubmit)}

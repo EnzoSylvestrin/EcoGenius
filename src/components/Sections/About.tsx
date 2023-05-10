@@ -29,6 +29,7 @@ const About = () => {
                     viewport={{ once: true }}
                 >
                     <Image
+                        className="drop-shadow-2xl"
                         src="/factory.png"
                         alt="Fábrica"
                         width={400}
