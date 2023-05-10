@@ -11,6 +11,7 @@
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.5.3",
     "@phosphor-icons/react": "^2.0.9",
+    "@radix-ui/react-select": "^1.2.1",
     "@radix-ui/react-slot": "^1.0.1",
     "@radix-ui/react-tooltip": "^1.0.5",
     "@types/node": "18.16.1",
@@ -25,6 +26,7 @@
     "postcss": "8.4.23",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.9",
     "react-loading-skeleton": "^3.3.0",
     "react-scroll-progress-bar": "^1.1.13",
     "sweetalert2": "^11.7.5",

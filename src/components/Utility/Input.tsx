@@ -5,6 +5,8 @@ import { InputHTMLAttributes, ReactNode } from 'react';
 import { Icon as IconProsphor } from '@phosphor-icons/react';
 
 import { Icon } from './Icon';
+import { SelectProps } from './Select';
+import { SelectComponent } from './Select';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> { }
 
@@ -48,8 +50,15 @@ function InputInput({ ...props }: InputInputProps) {
 
 InputInput.displayName = 'Input.Input'
 
+const InputSelect = ({ ...props }: SelectProps) => {
+    return (
+        <SelectComponent {...props} />
+    )
+}
+
 export const Input = {
     Root: InputRoot,
     Icon: InputIcon,
+    Select: InputSelect,
     Input: InputInput
 }

@@ -14,10 +14,10 @@ module.exports = {
         lightColor: 'rgb(249 250 251)',
         lightHover: '#dfe0e0',
         darkHover: '#444950',
-      }
-    },
-    screens: {
-      xs: '360px',
+      },
+      screens: {
+        xs: '360px',
+      },
     },
     fontSize: {
       xs: 14,

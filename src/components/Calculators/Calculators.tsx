@@ -33,14 +33,32 @@ export const CalcEletricity = () => {
     return (
         <>
             <label htmlFor="car" className="w-[90%]">
-                <Text>Litros por kilometro:</Text>
+                <Text>
+                    <motion.p
+                        initial={{ x: 40, opacity: 0 }}
+                        whileInView={{ x: 0, opacity: 1 }}
+                        transition={{ duration: 0.34 }}
+                        viewport={{ once: true }}
+                    >
+                        Carros por km:
+                    </motion.p>
+                </Text>
                 <Input.Root>
                     <Input.Icon icon={CarProfile} />
                     <Input.Input type="text" id="car" placeholder="l/km" />
                 </Input.Root>
             </label>
             <label htmlFor="another" className="w-[90%] mb-1">
-                <Text>Litros por kilometro:</Text>
+                <Text>
+                    <motion.p
+                        initial={{ x: 40, opacity: 0 }}
+                        whileInView={{ x: 0, opacity: 1 }}
+                        transition={{ duration: 0.34 }}
+                        viewport={{ once: true }}
+                    >
+                        Carros por km:
+                    </motion.p>
+                </Text>
                 <Input.Root>
                     <Input.Icon icon={CarProfile} />
                     <Input.Input type="text" id="another" placeholder="l/km" />
@@ -54,21 +72,48 @@ export const CalcCar = () => {
     return (
         <>
             <label htmlFor="car" className="w-[90%]">
-                <Text>Carros por km:</Text>
+                <Text>
+                    <motion.p
+                        initial={{ x: 40, opacity: 0 }}
+                        whileInView={{ x: 0, opacity: 1 }}
+                        transition={{ duration: 0.34 }}
+                        viewport={{ once: true }}
+                    >
+                        Carros por km:
+                    </motion.p>
+                </Text>
                 <Input.Root>
                     <Input.Icon icon={CarProfile} />
                     <Input.Input type="text" id="car" placeholder="l/km" />
                 </Input.Root>
             </label>
             <label htmlFor="another" className="w-[90%]">
-                <Text>Litros por kilometro:</Text>
+                <Text>
+                    <motion.p
+                        initial={{ x: 40, opacity: 0 }}
+                        whileInView={{ x: 0, opacity: 1 }}
+                        transition={{ duration: 0.34 }}
+                        viewport={{ once: true }}
+                    >
+                        Carros por km:
+                    </motion.p>
+                </Text>
                 <Input.Root>
                     <Input.Icon icon={CarProfile} />
-                    <Input.Input type="text" id="another" placeholder="l/km" />
+                    <Input.Select id={''} placeholder={"teste"} items={['teste', 'oi']} />
                 </Input.Root>
             </label>
             <label htmlFor="another" className="w-[90%] mb-1">
-                <Text>Litros por kilometro:</Text>
+                <Text>
+                    <motion.p
+                        initial={{ x: 40, opacity: 0 }}
+                        whileInView={{ x: 0, opacity: 1 }}
+                        transition={{ duration: 0.34 }}
+                        viewport={{ once: true }}
+                    >
+                        Carros por km:
+                    </motion.p>
+                </Text>
                 <Input.Root>
                     <Input.Icon icon={CarProfile} />
                     <Input.Input type="text" id="another" placeholder="l/km" />
