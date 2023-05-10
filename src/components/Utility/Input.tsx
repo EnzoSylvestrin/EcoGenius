@@ -37,12 +37,16 @@ function InputIcon({ icon, colored = true }: IconProps) {
 
 InputIcon.displayName = 'Input.Icon'
 
-export interface InputInputProps extends InputHTMLAttributes<HTMLInputElement> { }
+export interface InputInputProps extends InputHTMLAttributes<HTMLInputElement> {
+    register: any,
+}
 
-function InputInput({ ...props }: InputInputProps) {
+function InputInput({ register, name, ...props }: InputInputProps) {
     return (
         <input
             className='bg-transparent w-full caret-secondary text-darkColor text-sm outline-none placeholder:text-gray-400 dark:text-lightColor'
+            {...register(name)}
+            name={name}
             {...props}
         />
     )

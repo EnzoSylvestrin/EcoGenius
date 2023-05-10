@@ -16,7 +16,7 @@ type TextProps = {
 
 export const Text = ({ children, size = 'md', colored, useDarkMode = true, useLightMode = true, className, align = 'left', ...props }: TextProps) => {
 
-    const Comp = children != null ? 'p' : Slot;
+    const Comp = children != null ? 'span' : Slot;
 
     return (
         <Comp

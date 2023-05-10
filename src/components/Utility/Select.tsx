@@ -114,8 +114,8 @@ const SelectItem = React.forwardRef(({ children, className, value }: SelectItemP
     return (
         <Select.Item
             className={clsx(
-                'text-sm text-darkColor bg-gray-300 dark:bg-slate-800 flex cursor-pointer items-center',
-                'h-5 pl-7 py-4 relative select-none data-[disabled]:text-gray-400',
+                'text-sm text-darkColor w-72 bg-gray-300 dark:bg-slate-800 flex cursor-pointer items-center',
+                'h-5 pl-8 py-4 relative select-none data-[disabled]:text-gray-400',
                 'data-[disabled]:pointer-events-none data-[highlighted]:outline-none',
                 'data-[highlighted]:bg-lightHover data-[highlighted]:text-[var(--main)]',
                 'dark:text-lightColor dark:bg-InputColorDark dark:data-[highlighted]:bg-darkHover ',
@@ -125,7 +125,7 @@ const SelectItem = React.forwardRef(({ children, className, value }: SelectItemP
             ref={forwardedRef}
         >
             <Select.ItemText>{children}</Select.ItemText>
-            <Select.ItemIndicator className="absolute left-0 w-6 inline-flex items-center justify-center">
+            <Select.ItemIndicator className="absolute left-1 w-6 inline-flex items-center justify-center">
                 <Icon icon={Check} size={20} colored />
             </Select.ItemIndicator>
         </Select.Item>

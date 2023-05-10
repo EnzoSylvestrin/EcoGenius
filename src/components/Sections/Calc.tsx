@@ -6,7 +6,7 @@ import { Bus, CarProfile, Icon, Lightning, Wind } from "@phosphor-icons/react";
 
 import { motion } from 'framer-motion';
 
-import { CalcEletricity, CalcCar, CalcWrapper } from "../Calculators/Calculators";
+import { CalcEletricity, CalcCar, CalcGas, CalcBus } from "../Calculators/Calculators";
 
 import Calculator from '@/assets/lottie/Calculator.json';
 
@@ -27,14 +27,14 @@ const Calculadora = () => {
     const [Calculators, setCalculators] = useState<CalculatorsProps[]>([
         { Icon: Lightning, Text: 'Elétrica', Screen: <CalcEletricity />, Active: true },
         { Icon: CarProfile, Text: 'Deslocamento individual', Screen: <CalcCar />, Active: false },
-        { Icon: Bus, Text: 'Deslocamento coletivo', Screen: <CalcCar />, Active: false },
-        { Icon: Wind, Text: 'Gás', Screen: <CalcCar />, Active: false }
+        { Icon: Bus, Text: 'Deslocamento coletivo', Screen: <CalcBus />, Active: false },
+        { Icon: Wind, Text: 'Gás', Screen: <CalcGas />, Active: false }
     ]);
 
-    const [active, setActive] = useState<JSX.Element>(<CalcWrapper><CalcEletricity /></CalcWrapper>);
+    const [active, setActive] = useState<JSX.Element>(<CalcEletricity />);
 
     const SwitchActive = (Calculator: CalculatorsProps) => {
-        setActive(<CalcWrapper>{Calculator.Screen}</CalcWrapper>);
+        setActive(Calculator.Screen);
         setCalculators(prevCalculators => {
             const index = prevCalculators.findIndex(calculator => calculator.Active);
             if (index !== -1) {
