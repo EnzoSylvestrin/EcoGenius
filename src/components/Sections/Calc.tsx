@@ -1,34 +1,53 @@
 'use client';
 
+import { useState } from "react";
+
 import { Bus, CarProfile, Icon, Lightning, Wind } from "@phosphor-icons/react";
 
 import { motion } from 'framer-motion';
 
-import clsx from "clsx";
+import { CalcEletricity, CalcCar, CalcWrapper } from "../Calculators/Calculators";
 
-import Calculator from "@/assets/lottie/Calculator.json";
+import Calculator from '@/assets/lottie/Calculator.json';
 
-import { Heading } from "../Utility/Heading";
-import { Button } from "../Utility/Button";
-import { Input } from "../Utility/Input";
-import Player from "../Utility/Player";
-import { Text } from "../Utility/Text";
 import CalcButton from "../Utility/CalcButton";
 import Tooltip from "../Utility/Tooltip";
+import { Heading } from "../Utility/Heading";
+import Player from "../Utility/Player";
 
-type IconProps = {
+type CalculatorsProps = {
     Icon: Icon,
     Text: string,
+    Screen: JSX.Element,
+    Active: boolean,
 }
 
 const Calculadora = () => {
 
-    const Icons: IconProps[] = [
-        { Icon: Lightning, Text: 'Elétrica' },
-        { Icon: CarProfile, Text: 'Deslocamento individual' },
-        { Icon: Bus, Text: 'Deslocamento coletivo' },
-        { Icon: Wind, Text: 'Gás' }
-    ];
+    const [Calculators, setCalculators] = useState<CalculatorsProps[]>([
+        { Icon: Lightning, Text: 'Elétrica', Screen: <CalcEletricity />, Active: true },
+        { Icon: CarProfile, Text: 'Deslocamento individual', Screen: <CalcCar />, Active: false },
+        { Icon: Bus, Text: 'Deslocamento coletivo', Screen: <CalcCar />, Active: false },
+        { Icon: Wind, Text: 'Gás', Screen: <CalcCar />, Active: false }
+    ]);
+
+    const [active, setActive] = useState<JSX.Element>(<CalcWrapper><CalcEletricity /></CalcWrapper>);
+
+    const SwitchActive = (Calculator: CalculatorsProps) => {
+        setActive(<CalcWrapper>{Calculator.Screen}</CalcWrapper>);
+        setCalculators(prevCalculators => {
+            const index = prevCalculators.findIndex(calculator => calculator.Active);
+            if (index !== -1) {
+                prevCalculators[index].Active = false;
+            }
+            const updatedCalculators = prevCalculators.map(calculator =>
+                calculator === Calculator
+                    ? { ...calculator, Active: true }
+                    : calculator
+            );
+            return updatedCalculators;
+        });
+    };
 
     return (
         <section className="flex items-center justify-center flex-col py-10">
@@ -44,7 +63,7 @@ const Calculadora = () => {
             </Heading>
             <div className="w-full flex items-center justify-center gap-2">
                 {
-                    Icons.map((element, i) => {
+                    Calculators.map((element, i) => {
                         return (
                             <Tooltip
                                 key={i}
@@ -54,8 +73,9 @@ const Calculadora = () => {
                                         whileInView={{ y: 0, opacity: 1 }}
                                         transition={{ duration: 0.5, delay: i * 0.15 }}
                                         viewport={{ once: true }}
+                                        onClick={() => SwitchActive(element)}
                                     >
-                                        <CalcButton Icon={element.Icon} />
+                                        <CalcButton Active={element.Active} Icon={element.Icon} />
                                     </motion.div>
                                 }
                                 text={element.Text}
@@ -81,33 +101,9 @@ const Calculadora = () => {
                         }}
                     />
                 </motion.div>
-                <motion.div
-                    className={clsx(
-                        `w-[50%] min-w-[260px] max-w-[350px] bg-gray-200 dark:bg-neutral-800 flex gap-4 items-center 
-                        flex-col px-2 py-4 rounded-lg transition-colors duration-300`
-                    )}
-                    initial={{ x: 80, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.35 }}
-                    viewport={{ once: true }}
-                >
-                    <Heading align="center">Calcule</Heading>
-                    <label htmlFor="car" className="w-[90%]">
-                        <Text>Litros por kilometro:</Text>
-                        <Input.Root>
-                            <Input.Icon icon={CarProfile} />
-                            <Input.Input type="text" id="car" placeholder="l/km" />
-                        </Input.Root>
-                    </label>
-                    <label htmlFor="another" className="w-[90%] mb-1">
-                        <Text>Litros por kilometro:</Text>
-                        <Input.Root>
-                            <Input.Icon icon={CarProfile} />
-                            <Input.Input type="text" id="another" placeholder="l/km" />
-                        </Input.Root>
-                    </label>
-                    <Button text="Calcular" className="my-2" />
-                </motion.div>
+                {
+                    active
+                }
             </div>
         </section>
     );
