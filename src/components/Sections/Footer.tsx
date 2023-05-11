@@ -4,11 +4,11 @@ import { Text } from "../Utility/Text";
 const Footer = () => {
     return (
         <footer className={clsx(
-            `bg-gray-200 dark:bg-neutral-800 flex justify-between items-center py-3 px-6 
-            border-t-2 border-t-main transition-colors duration-300`
+            `bg-gray-200 dark:bg-neutral-800 flex flex-col justify-between items-center py-3 px-6 
+            border-t-2 border-t-main transition-colors duration-300 gap-1 mdxs:flex-row mdxs:gap-0`
         )}>
-            <Text>Insert text here</Text>
-            <Text><a href="#">Sobre nós</a></Text>
+            <Text align="center">Direitos reservados para EcoGenius</Text>
+            <Text align="center"><a href="#">Sobre nós</a></Text>
         </footer>
     );
 }

@@ -14,14 +14,15 @@ import { Icon } from './Icon';
 import { FormatText } from '@/Utils/Commom';
 
 export type SelectProps = {
-    placeholder: string;
-    items: string[];
-    id: string;
+    placeholder: string,
+    items: string[],
+    id: string,
+    selected?: boolean,
     value?: string,
     onChange?: (e: ChangeEvent<HTMLInputElement> | string) => void
 };
 
-export const SelectComponent = ({ placeholder, items, id, value, onChange }: SelectProps) => {
+export const SelectComponent = ({ placeholder, items, id, selected = false, value, onChange }: SelectProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const [show, setShow] = useState(false);
 
@@ -51,7 +52,7 @@ export const SelectComponent = ({ placeholder, items, id, value, onChange }: Sel
                 aria-label={placeholder}
                 id={id}
             >
-                <Select.Value placeholder={placeholder} />
+                <Select.Value {...(selected ? { defaultValue: items[0] } : { placeholder: placeholder })} />
                 <Select.Icon>
                     <Icon icon={CaretDown} weight='bold' size={24} colored />
                 </Select.Icon>

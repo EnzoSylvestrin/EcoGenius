@@ -12,6 +12,8 @@ import { Heading } from "../Utility/Heading";
 import { Button } from "../Utility/Button";
 import { Input } from "../Utility/Input";
 import { Text } from "../Utility/Text";
+import { CarbonIntensity, Carro, Etanol, Gasolina, Moto, Passagers, ValueBus, ValueWind, valueMetro, valueTrem } from "@/Utils/Contantes";
+import { MakeAlert } from "@/Utils/Commom";
 
 type EletricityProps = {
     metrica: string,
@@ -23,7 +25,20 @@ export const CalcEletricity = () => {
     const { register, handleSubmit, control } = useForm<EletricityProps>();
 
     const OnSubmit = (data: EletricityProps) => {
-        Swal.fire(`Submited: ${data.metrica} / ${data.value}`);
+        if (data.metrica === 'R$/Mês') {
+            MakeAlert({
+                title: "Pegada de carbono",
+                text: `Sua pegada de carbono é de: ${parseFloat((data.value * 100 * CarbonIntensity).toString()).toFixed(2)} CO2e`,
+                footer: true
+            });
+        }
+        else {
+            MakeAlert({
+                title: "Pegada de carbono",
+                text: `Sua pegada de carbono é de: ${parseFloat((data.value * CarbonIntensity).toString()).toFixed(2)} CO2e`,
+                footer: true
+            });
+        }
     }
 
     return (
@@ -98,7 +113,11 @@ export const CalcGas = () => {
     const { register, handleSubmit, control } = useForm<GasProps>();
 
     const OnSubmit = (data: GasProps) => {
-        Swal.fire(`Submited: ${data.metrica} / ${data.value}`);
+        MakeAlert({
+            title: "Pegada de carbono",
+            text: `Sua pegada de carbono é de: ${parseFloat((data.value * ValueWind).toString()).toFixed(2)} CO2`,
+            footer: true
+        });
     }
 
     return (
@@ -133,8 +152,8 @@ export const CalcGas = () => {
                         render={({ field }) =>
                             <Input.Select
                                 id="metrica"
-                                placeholder="Selecione a metrica..."
-                                items={["R$/Mês", "M³/Mês", "Quantidade de botijões/Mês"]}
+                                placeholder="M³/Mês"
+                                items={["M³/Mês"]}
                                 value={field.value}
                                 onChange={field.onChange}
                             />
@@ -174,7 +193,29 @@ export const CalcCar = () => {
     const { register, control, handleSubmit } = useForm<CarProps>();
 
     const OnSubmit = (data: CarProps) => {
-        Swal.fire(`Submited: ${data.transporte} / ${data.combustivel} / ${data.kilometragem}`);
+
+        let transporteConst = 0;
+        let useConst = 0;
+
+        if (data.transporte === 'Moto') {
+            transporteConst = Moto;
+        }
+        else {
+            transporteConst = Carro;
+        }
+
+        if (data.combustivel === 'Gasolina') {
+            useConst = Gasolina;
+        }
+        else {
+            useConst = Etanol;
+        }
+
+        MakeAlert({
+            title: "Pegada de carbono",
+            text: `A pegada de carbono é de: ${parseFloat((data.kilometragem * useConst * transporteConst).toString()).toFixed(2)} kg de CO2`,
+            footer: true
+        });
     }
 
     return (
@@ -210,7 +251,7 @@ export const CalcCar = () => {
                             <Input.Select
                                 id="transporte"
                                 placeholder="Selecione o veículo"
-                                items={["Moto", "Carro", "Bicicleta"]}
+                                items={["Moto", "Carro"]}
                                 value={field.value}
                                 onChange={field.onChange}
                             />
@@ -277,7 +318,27 @@ export const CalcBus = () => {
     const { register, control, handleSubmit } = useForm<BusProps>();
 
     const OnSubmit = (data: BusProps) => {
-        Swal.fire(`Submited: ${data.transporte} / ${data.kilometragem}`);
+        if (data.transporte === 'Ônibus') {
+            MakeAlert({
+                title: "Pegada de carbono",
+                text: `A pegada de carbono é de: ${parseFloat((data.kilometragem * ValueBus).toString()).toFixed(2)} kg de CO2`,
+                footer: true
+            });
+        }
+        else if (data.transporte === 'Trem') {
+            MakeAlert({
+                title: "Pegada de carbono",
+                text: `A pegada de carbono é de: ${parseFloat((data.kilometragem * Passagers * valueTrem).toString()).toFixed(2)} CO2e`,
+                footer: true
+            });
+        }
+        else {
+            MakeAlert({
+                title: "Pegada de carbono",
+                text: `A pegada de carbono é de: ${parseFloat(((data.kilometragem * Passagers * valueMetro)).toString()).toFixed(2)} CO2e`,
+                footer: true
+            });
+        }
     }
 
     return (
@@ -313,7 +374,7 @@ export const CalcBus = () => {
                             <Input.Select
                                 id="car"
                                 placeholder="Selecione o veículo"
-                                items={["Metrô", "Trem", "Ônibus", "Táxi"]}
+                                items={["Metrô", "Trem", "Ônibus"]}
                                 value={field.value}
                                 onChange={field.onChange}
                             />
