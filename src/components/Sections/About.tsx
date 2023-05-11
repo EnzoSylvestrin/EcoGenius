@@ -9,7 +9,7 @@ import { Text } from "../Utility/Text";
 
 const About = () => {
     return (
-        <section className="flex items-center justify-center flex-col py-10">
+        <section className="flex items-center justify-center flex-col py-10" id="whatIs">
             <Heading align="center" className={'mb-6'} colored>
                 <motion.p
                     initial={{ opacity: 0 }}
@@ -44,13 +44,19 @@ const About = () => {
                     viewport={{ once: true }}
                 >
                     <Heading align="center">Entenda</Heading>
-                    <Text align="center" className='leading-relaxed w-[90%] md:!text-start'>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati sunt
-                        magnam odio officia soluta eaque veniam totam cumque, atque, commodi quod non
-                        deserunt! Aperiam, ad nesciunt esse id distinctio possimus? <br />
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci
-                        aut provident sunt, repudiandae in placeat repellat! Beatae eius nostrum
-                        optio quibusdam, maiores repellat nobis minima quo quas neque nulla hic?
+                    <Text size="sm" align="center" className='leading-relaxed w-[90%] md:!text-start mt-2'>
+                        Segundo PACHECO (2011), o termo “Pegada de Carbono”, é basicamente o número de emissões
+                        de Gases de Efeito Estufa, que foi lançado para a atmosfera, provocado pelo consumo de
+                        energia e combustível. Então, a pegada de carbono mede a quantidade de CO2 que é emitida pelas
+                        pessoas em seu dia a dia.
+                        <br /><br />
+                        Tudo que utiliza combustíveis fósseis (petróleo, carvão e gás), emite o que é chamado de
+                        GEE (gases de efeito estufa), temos como exemplo o CO2, que em excesso, contribui para o
+                        aquecimento global. No estado em que se encontra o planeta atualmente, muitas pessoas se
+                        preocupam com o preservamento ambiental, então, para a diminuição dos gases emitidos em
+                        excesso procuram a redução de suas emissões de carbono, um bom modo para começar a
+                        planejar a redução é fazer o cálculo da sua pegada de carbono, ou seja, ver o valor total
+                        mensal ou anual de CO2 que foi emitido.
                     </Text>
                 </motion.div>
             </div>

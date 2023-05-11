@@ -50,7 +50,7 @@ const Calculadora = () => {
     };
 
     return (
-        <section className="flex items-center justify-center flex-col py-10">
+        <section className="flex items-center justify-center flex-col py-10" id="calculator">
             <Heading align="center" className={'mb-4'} colored>
                 <motion.p
                     initial={{ opacity: 0 }}

@@ -10,9 +10,6 @@ import { List, X } from "@phosphor-icons/react";
 
 import clsx from "clsx";
 
-import Image from "next/image";
-
-import { Heading } from "../Utility/Heading";
 import { Theme } from "../Utility/Theme";
 import { Text } from "../Utility/Text";
 import Logo from "../Utility/Logo";
@@ -75,8 +72,10 @@ const Header = () => {
                         <Theme isScrolled={isScrolled} />
                         <div className="h-6 w-[2px] mx-3 bg-gray-400" />
                         <ul className="list-none flex items-center gap-4">
-                            <Listitem isScrolled={isScrolled} text="Home" />
-                            <Listitem isScrolled={isScrolled} text="Calculadora" />
+                            <Listitem isScrolled={isScrolled} text="Home" id="home" />
+                            <Listitem isScrolled={isScrolled} text="Entenda" id="whatIs" />
+                            <Listitem isScrolled={isScrolled} text="Calculadora" id="calculator" />
+                            <Listitem isScrolled={isScrolled} text="Reduzir" id="reduct" />
                         </ul>
                     </div>
                 </div>
@@ -102,8 +101,10 @@ const Header = () => {
                     >
                         <div className="w-full flex items-center justify-center flex-col relative">
                             <ul className="list-none flex items-center flex-col gap-4">
-                                <Listitem isScrolled={isScrolled} text="Home" />
-                                <Listitem isScrolled={isScrolled} text="Calculadora" />
+                                <Listitem isScrolled={isScrolled} text="Home" id="home" />
+                                <Listitem isScrolled={isScrolled} text="Entenda" id="whatIs" />
+                                <Listitem isScrolled={isScrolled} text="Calculadora" id="calculator" />
+                                <Listitem isScrolled={isScrolled} text="Reduzir" id="reduct" />
                             </ul>
                             <div className="absolute bottom-[10px] left-[50%] -translate-x-[50%]">
                                 <Theme isScrolled={isScrolled} />
@@ -119,20 +120,23 @@ const Header = () => {
 type ListItemProps = {
     text: string,
     isScrolled: boolean,
+    id: string,
 }
 
-const Listitem = ({ text, isScrolled }: ListItemProps) => {
+const Listitem = ({ text, isScrolled, id }: ListItemProps) => {
 
     const isMedium = useIsMedium();
 
     return (
-        <li className={clsx(
-            "after:block after:w-full after:border-b-[2px] after:ease-in-out after:duration-[320ms] after:scale-0",
-            "after:border-b-main hover:after:scale-100 hover:after:h-auto uppercase",
-            "cursor-pointer"
-        )}>
-            <Text useLightMode={isScrolled || !isMedium} size="lg">{text}</Text>
-        </li>
+        <a href={`#${id}`}>
+            <li className={clsx(
+                "after:block after:w-full after:border-b-[2px] after:ease-in-out after:duration-[320ms] after:scale-0",
+                "after:border-b-main hover:after:scale-100 hover:after:h-auto uppercase",
+                "cursor-pointer"
+            )}>
+                <Text useLightMode={isScrolled || !isMedium} size="lg">{text}</Text>
+            </li>
+        </a>
     )
 }
 
