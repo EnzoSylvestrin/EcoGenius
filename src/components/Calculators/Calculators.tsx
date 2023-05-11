@@ -28,7 +28,7 @@ export const CalcEletricity = () => {
         if (data.metrica === 'R$/Mês') {
             MakeAlert({
                 title: "Pegada de carbono",
-                text: `Sua pegada de carbono é de: ${parseFloat((data.value * 100 * CarbonIntensity).toString()).toFixed(2)} CO2e`,
+                text: `Sua pegada de carbono é de: ${parseFloat((data.value * 0.83 * CarbonIntensity).toString()).toFixed(2)} CO2e`,
                 footer: true
             });
         }
