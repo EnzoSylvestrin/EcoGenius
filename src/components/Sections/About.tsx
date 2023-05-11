@@ -60,7 +60,40 @@ const About = () => {
                     </Text>
                 </motion.div>
             </div>
-        </section>
+            <div className="flex items-center justify-center flex-col md:flex-row mt-4">
+
+                <motion.div
+                    className="relative w-full p-2 flex items-center justify-center md:w-[50%]"
+                    initial={{ x: -200 }}
+                    whileInView={{ x: 0 }}
+                    transition={{ duration: 0.35, type: 'spring' }}
+                    viewport={{ once: true }}
+                >
+                    <Image
+                        className="drop-shadow-2xl"
+                        src="/dioxidoDeCarbono.jpg"
+                        alt="Fábrica"
+                        width={400}
+                        height={300}
+                    />
+                </motion.div>
+                <motion.div
+                    className="w-full flex mb-4 items-center justify-center flex-col md:w-[50%]"
+                    initial={{ x: -200, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.35, type: 'spring' }}
+                    viewport={{ once: true }}
+                >
+                    <Heading align="center">O que é Dioxído de carbono?</Heading>
+                    <Text size="sm" align="center" className='leading-relaxed w-[90%] md:!text-start mt-2'>
+                        de acordo com SILVA, M. et al. (2016, p.01), A emissão do Gás Dióxido de Carbono
+                        (CO2) é feito através das queimas de combustíveis fósseis que são derivados do
+                        petróleo, como na produção de cimento, conversão de grandes latifúndios para fins
+                        agropecuários, desmatamentos e queimadas.
+                    </Text>
+                </motion.div>
+            </div>
+        </section >
     );
 }
 
