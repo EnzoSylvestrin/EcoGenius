@@ -8,7 +8,7 @@ const Footer = () => {
             border-t-2 border-t-main transition-colors duration-300 gap-1 mdxs:flex-row mdxs:gap-0`
         )}>
             <Text align="center">Direitos reservados para EcoGenius</Text>
-            <Text align="center"><a href="#">Sobre nós</a></Text>
+            <Text align="center"><a href="https://portfolio-enzosylvestrin.vercel.app">By: Enzo Sylvestrin</a></Text>
         </footer>
     );
 }
